@@ -174,7 +174,7 @@
     
     <label for="phone">Phone <sup>*</sup></label><input  id="phone" maxlength="40" name="phone" size="20" type="text" required/><br>
     
-    <label for="Order Number">Order Number <sup>*</sup></label><input  id="00NAs000009IC2L" maxlength="100" name="00NAs000009IC2L" size="20" type="text" placeholder="ORDER-00000" required/><br>
+    <label for="Order Number">Order Number <sup>*</sup></label><input  id="00NgL00000nTals" maxlength="100" name="00NgL00000nTals" size="20" type="text" placeholder="Order-00000" required/><br>
     
     <label for="subject">Subject <sup>*</sup></label><input  id="subject" maxlength="80" name="subject" size="20" type="text" required/><br>
     
@@ -191,7 +191,7 @@
             // Regular expression for US phone numbers
             let phonePattern = /^(?:\+1\s?)?(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
             // Regular expression for Order Number (ORDER- followed by one or more digits)
-            let orderNumberPattern = /^ORDER-\d+$/;
+            let orderNumberPattern = /^Order-\d+$/;
     
             // Fields to validate for alphabetic input
             let fields = [
@@ -215,7 +215,7 @@
             }
     
             // Validate Order Number (ORDER- followed by one or more digits)
-            let orderNumber = document.getElementById("00NAs000009IC2L").value.trim();
+            let orderNumber = document.getElementById("00NgL00000nTals").value.trim();
             if (!orderNumberPattern.test(orderNumber)) {
                 alert("Order Number must be in the format ORDER- followed by at least one digit.");
                 return false; // Prevent form submission
