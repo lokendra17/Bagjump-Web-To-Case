@@ -1,0 +1,228 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report A Case</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            
+           
+        }
+        .Main-container{
+            width: auto;
+            height: fit-content;
+            overflow: scroll;
+            padding: 10px;
+            
+          
+            
+        }
+        form {
+            width: 40%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+        select {
+            height: 35px;
+        }
+        textarea {
+            resize: vertical;
+            height: 60px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background: #172a59;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #101d3d;
+        }
+        .section-header {
+            background: #172a59;
+            padding: 10px;
+            font-weight: bold;
+            margin: 20px 0 10px;
+            border-radius: 5px;
+            text-align: center;
+            color: #f0f0f0;
+        }
+        .multiselect {
+            width: 100%;
+            position: relative;
+        }
+        .select-box {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background: white;
+            min-height: 35px;
+        }
+        .pill {
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            margin: 2px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .options-container {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 10;
+        }
+        .options-container label {
+            display: block;
+            padding: 8px;
+            cursor: pointer;
+        }
+        .options-container label:hover {
+            background: #f0f0f0;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+          }
+
+          sup {
+            vertical-align: super;
+            font-size: large;
+            color: red;
+  }
+    </style>
+</head>
+<body>
+  <div class="Main-container">
+    <!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+    <!--  ----------------------------------------------------------------------  -->
+    <!--  NOTE: Please add the following <FORM> element to your page.             -->
+    <!--  ----------------------------------------------------------------------  -->
+    
+    <form action="https://data-energy-2581-dev-ed.scratch.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DgL000000CXfd" method="POST" onsubmit="return validateForm()">
+        <img src="/bagjump-logo.png" alt="BAGJUMP Logo" class="center">
+    <input type=hidden name="orgid" value="00DgL000000CXfd">
+    <input type=hidden name="retURL" value="http://google.com">
+    
+    <!--  ----------------------------------------------------------------------  -->
+    <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+    <!--  these lines if you wish to test in debug mode.                          -->
+    <!--  <input type="hidden" name="debug" value=1>                              -->
+    <!--  <input type="hidden" name="debugEmail" value="jigyasa@cyntexa.com">     -->
+    <!--  ----------------------------------------------------------------------  -->
+    
+    <label for="name">Name <sup>*</sup></label><input  id="name" maxlength="80" name="name" size="20" type="text" required/><br>
+    
+    <label for="email">Email <sup>*</sup></label><input  id="email" maxlength="80" name="email" size="20" type="text" required/><br>
+    
+    <label for="phone">Phone <sup>*</sup></label><input  id="phone" maxlength="40" name="phone" size="20" type="text" required/><br>
+    
+    <label for="Order Number">Order Number <sup>*</sup></label><input  id="00NAs000009IC2L" maxlength="100" name="00NAs000009IC2L" size="20" type="text" placeholder="ORDER-00000" required/><br>
+    
+    <label for="subject">Subject <sup>*</sup></label><input  id="subject" maxlength="80" name="subject" size="20" type="text" required/><br>
+    
+    <label for="description">Description</label><textarea name="description"></textarea><br>
+    <br>
+    <input type="submit" name="submit">
+    
+    </form>
+
+    <script>
+        function validateForm() {
+            // Regular expression to allow only letters (with spaces)
+            let namePattern = /^[A-Za-z\s]+$/; // Allows only letters and spaces
+            // Regular expression for US phone numbers
+            let phonePattern = /^(?:\+1\s?)?(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
+            // Regular expression for Order Number (ORDER- followed by one or more digits)
+            let orderNumberPattern = /^ORDER-\d+$/;
+    
+            // Fields to validate for alphabetic input
+            let fields = [
+                { id: "name", name: "name" }
+            ];
+    
+            // Loop through each field and validate alphabetic characters
+            for (let field of fields) {
+                let value = document.getElementById(field.id).value.trim();
+                if (!namePattern.test(value)) {
+                    alert(field.name + " must contain only letters. No numbers or special characters allowed.");
+                    return false; // Prevent form submission
+                }
+            }
+    
+            // Validate US Phone Number
+            let phone = document.getElementById("phone").value.trim();
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid US phone number (e.g., 123-456-7890, (123) 456-7890, or +1 123-456-7890).");
+                return false; // Prevent form submission
+            }
+    
+            // Validate Order Number (ORDER- followed by one or more digits)
+            let orderNumber = document.getElementById("00NAs000009IC2L").value.trim();
+            if (!orderNumberPattern.test(orderNumber)) {
+                alert("Order Number must be in the format ORDER- followed by at least one digit.");
+                return false; // Prevent form submission
+            }
+    
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>
